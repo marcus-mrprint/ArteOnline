@@ -16,6 +16,8 @@ class PreviewController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $vm = new ViewModel();
+        //$vm->setTemplate("layout/preview");
+        return $vm;
     }
 }

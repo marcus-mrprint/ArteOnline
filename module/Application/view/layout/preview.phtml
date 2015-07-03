@@ -1,0 +1,83 @@
+<?php echo $this->doctype(); ?>
+<html>
+    <!-- removed for now, causes problems in Firefox: manifest="svg-editor.manifest" -->
+    <head>
+        <meta charset="utf-8">
+        <base href="../">
+        <?php echo $this->headTitle('MP ' . $this->translate('ArteOnline - Preview'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+                ->appendName('apple-mobile-web-app-capable', 'yes')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge, chrome=1');
+        ?>
+        <!-- Styles -->
+
+        <?php
+        $styleArr = array(
+            "jgraduate/css/jPicker",
+            "jgraduate/css/jgraduate",
+            "css/svg-editor",
+            "spinbtn/JQuerySpinBtn"
+        );
+
+        $hl = $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'));
+
+        foreach ($styleArr as $value)
+        {
+            $hl = $hl->prependStylesheet($this->basePath($value . ".css"));
+        }
+        echo $hl;
+        ?>
+        <!-- Scripts -->
+        <?php
+        $scriptArr = array(
+            "jquery/jquery",
+            "js-hotkeys/jquery.hotkeys.min",
+            "jquerybbq/jquery.bbq.min",
+            "svgicons/jquery.svgicons",
+            "jgraduate/jquery.jgraduate.min",
+            "spinbtn/JQuerySpinBtn.min",
+            "js/touch",
+            "js/svgedit",
+            "js/jquery-svg",
+            "contextmenu/jquery.contextMenu",
+            "js/browser",
+            "js/svgtransformlist",
+            "js/math",
+            "js/units",
+            "js/svgutils",
+            "js/sanitize",
+            "js/history",
+            "js/coords",
+            "js/recalculate",
+            "js/select",
+            "js/draw",
+            "js/path",
+            "js/svgcanvas",
+            "js/svg-editor",
+            "locale/locale",
+            "js/contextmenu",
+            "locale/lang.pt-BR",
+            "js/config",
+            "jquery-ui/jquery-ui-1.8.17.custom.min",
+            "jgraduate/jpicker"
+        );
+
+        $hs = $this->headScript();
+        
+        $scriptArr = array_reverse($scriptArr);
+
+        foreach ($scriptArr as $value)
+        {
+            $hs = $hs->prependFile($this->basePath($value . '.js'));
+        }
+        echo $hs;
+        ?>
+
+    </head>
+    <body>
+        <?php echo $this->content; ?>
+    </body>
+</html>

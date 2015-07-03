@@ -11,11 +11,12 @@ return array(
     'router' => array(
         'routes' => array(
             'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Literal',
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
                         'action'     => 'index',
                     ),
                 ),
@@ -62,7 +63,7 @@ return array(
         ),
     ),
     'translator' => array(
-        'locale' => 'en_US',
+        'locale' => 'pt_BR',
         'translation_file_patterns' => array(
             array(
                 'type'     => 'gettext',
@@ -89,7 +90,7 @@ return array(
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
-            __DIR__ . '/../view',
+            'Application'=>__DIR__ . '/../view',
         ),
     ),
     // Placeholder for console routes

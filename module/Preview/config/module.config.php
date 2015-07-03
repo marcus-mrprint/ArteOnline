@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -8,13 +9,12 @@
  */
 
 return array(
-    'router' => array(
+    'router'          => array(
         'routes' => array(
-            
             'preview' => array(
-                'type'    => 'segment',
+                'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/preview/[:action][/:cod][/]',
+                    'route'    => '/preview/[:action][/:cod]',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Preview\Controller',
                         'controller'    => 'Preview',
@@ -29,12 +29,12 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-        'factories' => array(
+        'factories'          => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
     ),
-    'translator' => array(
-        'locale' => 'en_US',
+    'translator'      => array(
+        'locale'                    => 'pt_BR',
         'translation_file_patterns' => array(
             array(
                 'type'     => 'gettext',
@@ -43,29 +43,29 @@ return array(
             ),
         ),
     ),
-    'controllers' => array(
+    'controllers'     => array(
         'invokables' => array(
             'Preview\Controller\Preview' => 'Preview\Controller\PreviewController'
         ),
     ),
-    'view_manager' => array(
+    'view_manager'    => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'preview/preview/index' => __DIR__ . '/../view/preview/preview/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+        'template_map'             => array(
+            'layout/preview'         => __DIR__ . '/../view/layout/preview.phtml',
+            'preview/preview/index' => __DIR__ . '/../view/preview/index/index.phtml',
+            'error/404'             => __DIR__ . '/../view/error/404.phtml',
+            'error/index'           => __DIR__ . '/../view/error/index.phtml',
         ),
-        'template_path_stack' => array(
-            __DIR__ . '/../view',
+        'template_path_stack'      => array(
+            "Preview" => __DIR__ . '/../../view',
         ),
     ),
     // Placeholder for console routes
-    'console' => array(
+    'console'         => array(
         'router' => array(
             'routes' => array(
             ),
